@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Employee Profile - Moiz Care HRIS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white min-h-screen">
+<div class="flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-[#f0f2f4] dark:border-gray-800 px-6 lg:px-10 py-3">
+<div class="max-w-[1200px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary text-white p-1.5 rounded-lg">
+<span class="material-symbols-outlined block text-xl">medical_services</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Moiz Care HRIS</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#617589] hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold transition-colors border-b-2 border-primary py-1" href="#">Employees</a>
+<a class="text-[#617589] hover:text-primary text-sm font-medium transition-colors" href="#">Payroll</a>
+<a class="text-[#617589] hover:text-primary text-sm font-medium transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#617589] text-xl">search</span>
+<input class="bg-[#f0f2f4] dark:bg-gray-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/50" placeholder="Search employee..."/>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border-2 border-primary/20" data-alt="Administrator user profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCF6G5y10r23s8EX8z8U4_-L_WvuOm-dbVz8UKdr2k_ECWGhwCLFx_k6RlK4LavFVaZko1UyTYCoL-o1sOc__m2IgnyGHAgRl6Jy8VHWtKIedS4wIpQrSufemZUY4BhRkhLKdZ4WflgUFIsvJgrcQl8AmjmOSpP16_cSn3M6vpPO-cvKYSdW8El6bu2zqAblkocppBr6sIzj5OwpH--wt-MGG_RqVz90g8D-OK8_wigqm5kFgbVcAPUEgYzXIaleDk4RgogPdUAeunE");'></div>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-[1200px] mx-auto w-full px-6 py-6 flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm">
+<a class="text-[#617589] hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-sm text-[#617589]">chevron_right</span>
+<a class="text-[#617589] hover:text-primary" href="#">Employees</a>
+<span class="material-symbols-outlined text-sm text-[#617589]">chevron_right</span>
+<span class="text-[#111418] dark:text-white font-medium">Budi Santoso</span>
+</nav>
+<!-- Profile Header Card -->
+<section class="bg-white dark:bg-gray-900 rounded-xl border border-[#f0f2f4] dark:border-gray-800 p-6 shadow-sm">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-2xl size-32 shadow-md border-4 border-white dark:border-gray-800" data-alt="Employee profile picture of Budi Santoso" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDm-qIn7s605w_dy0n-5CWxe9qR1Gor8Gg1-iWu5J9hJejBtZNt-E-klSZOvN-2FIaQuVzYKyUnF-bHUUWX3C5gSTTQzaJ1kdt8IHWvF4fCY5nsr4lwjW2NP1S4u7QBh6pcXDl1j_Wn9VWo0glYCVNKv8Ma1JjrNf8QYDskw3UWUsrB5WvcELkWAd70JyLy_pdyhFM38cz-nCBE8u5BHqk11DzXuxLD56ehgCOHJE-6PIjaZLNlHS0tTqESzjR8Zukf01jHQn8xNljA");'></div>
+<span class="absolute bottom-1 right-1 bg-green-500 border-2 border-white dark:border-gray-900 rounded-full size-4"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-3">
+<h1 class="text-[#111418] dark:text-white text-2xl font-bold tracking-tight">Budi Santoso</h1>
+<span class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Active</span>
+</div>
+<p class="text-[#617589] dark:text-gray-400 text-base font-medium mt-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">badge</span> Senior Caretaker • EMP-2023-089
+                            </p>
+<p class="text-[#617589] dark:text-gray-400 text-sm mt-0.5">Nursing Department • Shift A (Morning)</p>
+</div>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-[#f0f2f4] dark:bg-gray-800 text-[#111418] dark:text-white rounded-lg text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span> Edit Profile
+                        </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 transition-shadow shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-xl">picture_as_pdf</span> Print PDF
+                        </button>
+</div>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<div class="bg-white dark:bg-gray-900 rounded-xl border border-[#f0f2f4] dark:border-gray-800 shadow-sm overflow-hidden">
+<div class="flex border-b border-[#f0f2f4] dark:border-gray-800 px-6 overflow-x-auto no-scrollbar">
+<a class="flex items-center gap-2 border-b-2 border-primary text-primary px-4 pb-4 pt-5 whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<p class="text-sm font-bold tracking-[0.015em]">Profil</p>
+</a>
+<a class="flex items-center gap-2 border-b-2 border-transparent text-[#617589] hover:text-primary px-4 pb-4 pt-5 transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-xl">folder_open</span>
+<p class="text-sm font-semibold tracking-[0.015em]">Berkas</p>
+</a>
+<a class="flex items-center gap-2 border-b-2 border-transparent text-[#617589] hover:text-primary px-4 pb-4 pt-5 transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-xl">event_available</span>
+<p class="text-sm font-semibold tracking-[0.015em]">Absensi</p>
+</a>
+<a class="flex items-center gap-2 border-b-2 border-transparent text-[#617589] hover:text-primary px-4 pb-4 pt-5 transition-colors whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-xl">calendar_month</span>
+<p class="text-sm font-semibold tracking-[0.015em]">Jadwal</p>
+</a>
+</div>
+<!-- Tab Content: Profil (Active) -->
+<div class="p-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Personal Information -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-2 pb-2 border-b border-[#f0f2f4] dark:border-gray-800">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+<h3 class="text-lg font-bold text-[#111418] dark:text-white">Personal Information</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4">
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Full Name</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Budi Santoso, S.Kep</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">NIK</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">3271040506880001</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Gender</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Male</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Birth Place / Date</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Jakarta, 12 May 1988</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Religion</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Islam</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Phone</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">+62 812-3456-7890</p>
+</div>
+<div class="flex flex-col gap-1 sm:col-span-2">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Address</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium leading-relaxed">Jl. Melati No. 45, Kebayoran Lama, Jakarta Selatan, 12240</p>
+</div>
+</div>
+</div>
+<!-- Employment Data -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-2 pb-2 border-b border-[#f0f2f4] dark:border-gray-800">
+<span class="material-symbols-outlined text-primary">work</span>
+<h3 class="text-lg font-bold text-[#111418] dark:text-white">Employment Data</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4">
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Employee ID</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-bold">EMP-2023-089</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Position</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Senior Caretaker</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Department</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Nursing &amp; Care</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Join Date</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">15 January 2023</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Employment Status</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Permanent Staff</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Supervisor</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Siti Aminah, M.Kep</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Base Salary Type</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Monthly</p>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] text-xs font-semibold uppercase tracking-wider">Work Location</p>
+<p class="text-[#111418] dark:text-gray-200 text-sm font-medium">Main Clinic - Jakarta</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Account Footer Action -->
+<div class="mt-12 flex items-center justify-between p-4 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-sm text-[#617589] dark:text-gray-400">Last updated by Admin on Aug 24, 2023</p>
+</div>
+<button class="text-primary hover:underline text-sm font-bold">View History Logs</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-10 border-t border-[#f0f2f4] dark:border-gray-800 text-center">
+<p class="text-[#617589] text-sm">© 2023 Moiz Care HRIS. All rights reserved.</p>
+</footer>
+</div>
+</body></html>

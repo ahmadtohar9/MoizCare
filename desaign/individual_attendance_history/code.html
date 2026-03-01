@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Individual Attendance History - Moiz Care HRIS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-[#111418] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+</svg>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Moiz Care HRIS</h2>
+</div>
+<nav class="flex items-center gap-9">
+<a class="text-[#617589] hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary pb-0.5" href="#">Employees</a>
+<a class="text-[#617589] hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Payroll</a>
+<a class="text-[#617589] hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Attendance</a>
+<a class="text-[#617589] hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#f0f2f4] dark:bg-gray-800">
+<div class="text-[#617589] flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 h-full placeholder:text-[#617589] px-4 pl-2 text-base font-normal dark:text-white" placeholder="Search employee..." value=""/>
+</div>
+</label>
+<div class="flex items-center gap-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200 dark:border-gray-700" data-alt="Avatar of the logged in HR administrator" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAh-lKKdoFPlgCdn3O-ob7cxLmf82aELsiFfNrR1JlPzmXfGk9ZgLoJlSMwkeCxJvMw6zaSoXa0UfZOars7zoTqaXbAk371Dygn62zZlarppIqocOKwZdmrjKnsuyROdUPicpQBytPZNPvVA4tbuEOjCMSfRTlx8NJ3ByOz7Gu3rAundQJ9o-GEzhwzgxlmX7kd0RMYsezQI0Y6ohFe-YZL2BKEkS4kS1v5xvKuE-Az_hcoIKKNjPeXMAN9IA6cOdmnJXomFfAA6-vE");'></div>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-4 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex flex-wrap gap-2 mb-6">
+<a class="text-[#617589] hover:text-primary text-base font-medium leading-normal flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">group</span> Employees
+            </a>
+<span class="text-[#617589] text-base font-medium leading-normal">/</span>
+<a class="text-[#617589] hover:text-primary text-base font-medium leading-normal" href="#">Employee Profile</a>
+<span class="text-[#617589] text-base font-medium leading-normal">/</span>
+<span class="text-[#111418] dark:text-white text-base font-bold leading-normal">Absensi</span>
+</nav>
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="size-16 rounded-xl bg-center bg-cover border-2 border-white shadow-sm" data-alt="Profile photo of John Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnxuEztfKJXMMPuPtAy-Ik_NnV3e2Y2-mz_OHq1OUE7qlDKEvxBJF7F51SSJBdZQBWRmnMDmmZp4ZKmaHMZ7dYvT91RG7Ex8bDZJxDEY7eJwqbp2_tesiqpwY-rS8V4GrVSXKfnu71EJNLcCeJI9p1MumTd2xv4Y1lmm79Vn7iJr3-soDPRGNFeWtuCFT730u-QV6vWVLUwM3gs9jjBqit_FIdgMXGSn6rpTZZ8sRNB8-KPzRtUnCJ6i7sr3JpV34CBf-OuijSwRAm");'></div>
+<div>
+<h1 class="text-[#111418] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">John Doe - Attendance</h1>
+<p class="text-[#617589] text-base font-normal">Employee ID: #EMP-9921 • Department: Product &amp; Design</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-white dark:bg-gray-800 border border-[#e5e7eb] dark:border-gray-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span> Export PDF
+                </button>
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">add</span> Correction Request
+                </button>
+</div>
+</div>
+<!-- Attendance Stats Summary -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-800 shadow-sm border-l-4 border-green-500">
+<div class="flex justify-between items-center">
+<p class="text-[#617589] text-sm font-semibold uppercase tracking-wider">Total Hadir</p>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<p class="text-[#111418] dark:text-white tracking-light text-4xl font-black">22 <span class="text-base font-normal text-[#617589]">Days</span></p>
+<div class="mt-2 text-xs text-green-600 font-medium">+2 days from last month</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-800 shadow-sm border-l-4 border-yellow-500">
+<div class="flex justify-between items-center">
+<p class="text-[#617589] text-sm font-semibold uppercase tracking-wider">Izin / Sakit</p>
+<span class="material-symbols-outlined text-yellow-500">event_available</span>
+</div>
+<p class="text-[#111418] dark:text-white tracking-light text-4xl font-black">2 <span class="text-base font-normal text-[#617589]">Days</span></p>
+<div class="mt-2 text-xs text-yellow-600 font-medium">1 Sakit, 1 Cuti Tahunan</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-gray-800 shadow-sm border-l-4 border-red-500">
+<div class="flex justify-between items-center">
+<p class="text-[#617589] text-sm font-semibold uppercase tracking-wider">Alpha / Terlambat</p>
+<span class="material-symbols-outlined text-red-500">warning</span>
+</div>
+<p class="text-[#111418] dark:text-white tracking-light text-4xl font-black">1 <span class="text-base font-normal text-[#617589]">Day</span></p>
+<div class="mt-2 text-xs text-red-600 font-medium">Unexplained absence on Oct 14</div>
+</div>
+</div>
+<!-- Section Header & Filter -->
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-[#e5e7eb] dark:border-gray-700">
+<div class="px-6 py-5 border-b border-[#e5e7eb] dark:border-gray-700">
+<h2 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">Attendance Logs</h2>
+<p class="text-sm text-[#617589]">Detailed daily check-in and check-out records for October 2023</p>
+</div>
+<!-- Filters -->
+<div class="p-6 bg-[#fcfcfc] dark:bg-[#1a242d] flex flex-wrap items-end gap-4">
+<div class="flex flex-col gap-1.5 min-w-[200px]">
+<span class="text-xs font-bold text-[#617589] uppercase tracking-wide">Select Period</span>
+<div class="relative">
+<select class="form-select w-full rounded-lg border-[#e5e7eb] dark:border-gray-600 dark:bg-gray-800 py-2 pl-3 pr-10 focus:ring-primary focus:border-primary">
+<option>October 2023</option>
+<option>September 2023</option>
+<option>August 2023</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1.5 min-w-[150px]">
+<span class="text-xs font-bold text-[#617589] uppercase tracking-wide">Status Filter</span>
+<select class="form-select w-full rounded-lg border-[#e5e7eb] dark:border-gray-600 dark:bg-gray-800 py-2 pl-3 focus:ring-primary focus:border-primary">
+<option>All Status</option>
+<option>Hadir</option>
+<option>Terlambat</option>
+<option>Izin</option>
+<option>Alpha</option>
+</select>
+</div>
+<button class="bg-primary text-white h-10 px-6 rounded-lg font-semibold flex items-center gap-2 hover:bg-blue-700 shadow-md shadow-blue-500/20">
+<span class="material-symbols-outlined text-sm">filter_list</span> Apply Filter
+                </button>
+</div>
+<!-- Attendance Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-900 border-y border-[#e5e7eb] dark:border-gray-700">
+<th class="px-6 py-4 text-xs font-bold text-[#617589] uppercase tracking-wider">Date</th>
+<th class="px-6 py-4 text-xs font-bold text-[#617589] uppercase tracking-wider">Schedule</th>
+<th class="px-6 py-4 text-xs font-bold text-[#617589] uppercase tracking-wider">Clock In</th>
+<th class="px-6 py-4 text-xs font-bold text-[#617589] uppercase tracking-wider">Clock Out</th>
+<th class="px-6 py-4 text-xs font-bold text-[#617589] uppercase tracking-wider">Total Work</th>
+<th class="px-6 py-4 text-xs font-bold text-[#617589] uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-[#617589] uppercase tracking-wider">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e5e7eb] dark:divide-gray-700">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="px-6 py-4 font-medium">Mon, 23 Oct 2023</td>
+<td class="px-6 py-4 text-sm">08:00 - 17:00</td>
+<td class="px-6 py-4 text-sm font-semibold text-green-600">07:55</td>
+<td class="px-6 py-4 text-sm font-semibold text-primary">17:05</td>
+<td class="px-6 py-4 text-sm">9h 10m</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                    Hadir
+                                </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-[#617589] hover:text-primary"><span class="material-symbols-outlined">info</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="px-6 py-4 font-medium">Fri, 20 Oct 2023</td>
+<td class="px-6 py-4 text-sm">08:00 - 17:00</td>
+<td class="px-6 py-4 text-sm font-semibold text-red-500">08:15</td>
+<td class="px-6 py-4 text-sm font-semibold text-primary">17:00</td>
+<td class="px-6 py-4 text-sm">8h 45m</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">
+                                    Terlambat
+                                </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-[#617589] hover:text-primary"><span class="material-symbols-outlined">info</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="px-6 py-4 font-medium">Thu, 19 Oct 2023</td>
+<td class="px-6 py-4 text-sm">08:00 - 17:00</td>
+<td class="px-6 py-4 text-sm">-</td>
+<td class="px-6 py-4 text-sm">-</td>
+<td class="px-6 py-4 text-sm">0h 0m</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                                    Cuti (Izin)
+                                </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-[#617589] hover:text-primary"><span class="material-symbols-outlined">info</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="px-6 py-4 font-medium">Wed, 18 Oct 2023</td>
+<td class="px-6 py-4 text-sm">08:00 - 17:00</td>
+<td class="px-6 py-4 text-sm font-semibold text-green-600">07:50</td>
+<td class="px-6 py-4 text-sm font-semibold text-primary">18:30</td>
+<td class="px-6 py-4 text-sm">10h 40m</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center w-fit px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                        Hadir
+                                    </span>
+<span class="inline-flex items-center w-fit px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+                                        Overtime
+                                    </span>
+</div>
+</td>
+<td class="px-6 py-4">
+<button class="text-[#617589] hover:text-primary"><span class="material-symbols-outlined">info</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+<td class="px-6 py-4 font-medium">Tue, 17 Oct 2023</td>
+<td class="px-6 py-4 text-sm">08:00 - 17:00</td>
+<td class="px-6 py-4 text-sm">-</td>
+<td class="px-6 py-4 text-sm">-</td>
+<td class="px-6 py-4 text-sm">0h 0m</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+                                    Alpha
+                                </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-xs font-semibold">Fix Issue</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-[#e5e7eb] dark:border-gray-700 flex justify-between items-center bg-[#fcfcfc] dark:bg-[#1a242d]">
+<p class="text-sm text-[#617589]">Showing 1 to 5 of 22 records</p>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-100 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white font-bold text-sm">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium text-sm">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium text-sm">3</button>
+<button class="w-8 h-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium text-sm">4</button>
+<button class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-100">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Support Text -->
+<div class="mt-8 flex items-start gap-3 bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
+<span class="material-symbols-outlined text-primary">info</span>
+<div>
+<p class="text-sm font-semibold text-[#111418] dark:text-white">Attendance Discrepancy?</p>
+<p class="text-sm text-[#617589]">If you find any errors in the logs above, please contact your department supervisor or click the 'Correction Request' button to submit a manual log for approval.</p>
+</div>
+</div>
+</main>
+<footer class="mt-20 py-8 border-t border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-[#111418]">
+<div class="max-w-[1200px] mx-auto px-4 flex justify-between items-center">
+<p class="text-sm text-[#617589]">© 2023 Moiz Care HRIS. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-sm text-[#617589] hover:text-primary" href="#">Terms of Service</a>
+<a class="text-sm text-[#617589] hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-sm text-[#617589] hover:text-primary" href="#">Contact HR</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weekly &amp; Monthly Shift Calendar - Moiz Care HRIS</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        .calendar-cell {
+            min-height: 120px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white min-h-screen">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 dark:border-white/5 bg-white dark:bg-[#111418] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">medical_services</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Moiz Care HRIS</h2>
+</div>
+<nav class="flex items-center gap-9">
+<a class="text-[#111418] dark:text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-[#111418] dark:text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Karyawan</a>
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary" href="#">Jadwal</a>
+<a class="text-[#111418] dark:text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Laporan</a>
+<a class="text-[#111418] dark:text-white/80 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Pengaturan</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#617589] flex border-none bg-gray-100 dark:bg-white/5 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-white/5 focus:border-none h-full placeholder:text-[#617589] px-4 rounded-l-none border-l-0 pl-2 text-sm" placeholder="Cari fitur..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg size-10 bg-gray-100 dark:bg-white/5 text-[#111418] dark:text-white hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-gray-100 dark:bg-white/5 text-[#111418] dark:text-white hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200 dark:border-white/10" data-alt="User profile picture of an HR manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzIJtnYW7dXgkHbZZY50rhsNYg86-vTehxCPk0uM_Yooi6wfhaPz-lir8V8TBEprWETsUcVBUZuIsDLd3jD3bEDRYA8DuM0j79UtZYwji3SfkGICdHyQWsCBXOqZThEix00XcCnFF3l3S9PWO6rFHQ9Uh3OVUI2O7vb-GMOjdiop8_Dv71uwFTcf6BLM_R9dbvWxMSZEtA0bv7nU5xc-za89uCdlS07RkP-62ymZrAxTmtEa0m6xIiwEo6eDjSEa_VoZs2bONgqg36");'></div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-6 p-6 lg:p-10">
+<!-- SideNavBar (Filters) -->
+<aside class="w-full lg:w-64 flex flex-col gap-6 shrink-0">
+<div class="bg-white dark:bg-[#111418] rounded-xl border border-gray-200 dark:border-white/5 p-5 shadow-sm">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col">
+<h1 class="text-[#111418] dark:text-white text-base font-bold leading-normal">Filter Jadwal</h1>
+<p class="text-[#617589] text-xs font-normal leading-normal">Sesuaikan tampilan shift</p>
+</div>
+<div class="space-y-4 pt-2">
+<div>
+<span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 block">Departemen</span>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<p class="text-sm font-semibold">Semua</p>
+</div>
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">monitor_heart</span>
+<p class="text-sm font-medium">Nursing</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+<p class="text-sm font-medium">Admin</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">vaccines</span>
+<p class="text-sm font-medium">Medical</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">cleaning_services</span>
+<p class="text-sm font-medium">Housekeeping</p>
+</div>
+</div>
+</div>
+<div>
+<span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 block">Tipe Shift</span>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="size-4 rounded bg-blue-100 border border-blue-400 flex items-center justify-center">
+<div class="size-2 rounded-full bg-blue-500"></div>
+</div>
+<span class="text-sm text-gray-600 dark:text-gray-400">Pagi (Morning)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="size-4 rounded bg-indigo-900 border border-indigo-700 flex items-center justify-center">
+<div class="size-2 rounded-full bg-indigo-400"></div>
+</div>
+<span class="text-sm text-gray-600 dark:text-gray-400">Malam (Night)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="size-4 rounded bg-orange-100 border border-orange-400 flex items-center justify-center">
+<div class="size-2 rounded-full bg-orange-500"></div>
+</div>
+<span class="text-sm text-gray-600 dark:text-gray-400">Libur (Off)</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span>Terapkan Filter</span>
+</button>
+</div>
+<!-- Stats Mini Card -->
+<div class="bg-primary/5 border border-primary/20 p-4 rounded-xl">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">info</span>
+<h3 class="text-primary font-bold text-sm">Status Hari Ini</h3>
+</div>
+<p class="text-xs text-[#111418] dark:text-white/70">85% Karyawan sudah dalam jadwal. 3 posisi Nursing masih kosong.</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col gap-6">
+<!-- PageHeading & Controls -->
+<div class="bg-white dark:bg-[#111418] rounded-xl border border-gray-200 dark:border-white/5 p-6 shadow-sm">
+<div class="flex flex-wrap justify-between items-center gap-4">
+<div class="flex min-w-72 flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">Mei 2024</p>
+<p class="text-[#617589] text-sm font-normal leading-normal">Kelola rotasi dan jadwal kerja karyawan Moiz Care.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-gray-100 dark:bg-white/5 text-[#111418] dark:text-white text-sm font-bold hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined mr-2 text-lg">edit</span>
+<span class="truncate">Edit Shift</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined mr-2 text-lg">add</span>
+<span class="truncate">Tambah Jadwal</span>
+</button>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 dark:border-white/5 pt-6">
+<!-- SegmentedButtons -->
+<div class="flex min-w-[300px] items-center rounded-lg bg-gray-100 dark:bg-white/5 p-1">
+<label class="flex cursor-pointer h-9 grow items-center justify-center rounded-md px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-white/10 has-[:checked]:shadow-sm has-[:checked]:text-[#111418] dark:has-[:checked]:text-white text-[#617589] text-sm font-semibold transition-all">
+<span>Bulan</span>
+<input checked="" class="invisible w-0" name="calendar-view" type="radio" value="Month"/>
+</label>
+<label class="flex cursor-pointer h-9 grow items-center justify-center rounded-md px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-white/10 has-[:checked]:shadow-sm has-[:checked]:text-[#111418] dark:has-[:checked]:text-white text-[#617589] text-sm font-semibold transition-all">
+<span>Minggu</span>
+<input class="invisible w-0" name="calendar-view" type="radio" value="Week"/>
+</label>
+<label class="flex cursor-pointer h-9 grow items-center justify-center rounded-md px-4 has-[:checked]:bg-white dark:has-[:checked]:bg-white/10 has-[:checked]:shadow-sm has-[:checked]:text-[#111418] dark:has-[:checked]:text-white text-[#617589] text-sm font-semibold transition-all">
+<span>Hari</span>
+<input class="invisible w-0" name="calendar-view" type="radio" value="Day"/>
+</label>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-4 py-2 text-sm font-bold border border-gray-200 dark:border-white/10 rounded-lg">Hari Ini</button>
+<button class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-9 px-3 bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 text-sm font-medium hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined mr-2 text-lg">download</span>
+                            PDF
+                        </button>
+<button class="flex items-center justify-center rounded-lg h-9 px-3 bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 text-sm font-medium hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined mr-2 text-lg">print</span>
+                            Print
+                        </button>
+</div>
+</div>
+</div>
+<!-- Calendar Area -->
+<div class="bg-white dark:bg-[#111418] rounded-xl border border-gray-200 dark:border-white/5 shadow-sm overflow-hidden">
+<!-- Calendar Header Days -->
+<div class="calendar-grid bg-gray-50 dark:bg-white/5 border-b border-gray-200 dark:border-white/10">
+<div class="py-4 text-center text-xs font-bold text-gray-500 uppercase">Senin</div>
+<div class="py-4 text-center text-xs font-bold text-gray-500 uppercase">Selasa</div>
+<div class="py-4 text-center text-xs font-bold text-gray-500 uppercase">Rabu</div>
+<div class="py-4 text-center text-xs font-bold text-gray-500 uppercase">Kamis</div>
+<div class="py-4 text-center text-xs font-bold text-gray-500 uppercase">Jumat</div>
+<div class="py-4 text-center text-xs font-bold text-gray-500 uppercase text-primary">Sabtu</div>
+<div class="py-4 text-center text-xs font-bold text-gray-500 uppercase text-red-500">Minggu</div>
+</div>
+<!-- Calendar Content -->
+<div class="calendar-grid">
+<!-- Week 1 Empty or Prev Month -->
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 bg-gray-50/50 dark:bg-black/20 opacity-50">
+<span class="text-sm font-medium">29</span>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 bg-gray-50/50 dark:bg-black/20 opacity-50">
+<span class="text-sm font-medium">30</span>
+</div>
+<!-- May 1 -->
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">1</span>
+<div class="mt-2 flex flex-col gap-1">
+<div class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[10px] p-1.5 rounded font-bold border-l-2 border-blue-500 truncate cursor-pointer hover:brightness-95">
+                                [P] Budi Santoso
+                            </div>
+<div class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[10px] p-1.5 rounded font-bold border-l-2 border-blue-500 truncate cursor-pointer hover:brightness-95">
+                                [P] Siti Aminah
+                            </div>
+</div>
+</div>
+<!-- May 2 -->
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">2</span>
+<div class="mt-2 flex flex-col gap-1">
+<div class="bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-200 text-[10px] p-1.5 rounded font-bold border-l-2 border-indigo-600 truncate cursor-pointer hover:brightness-95">
+                                [M] Ahmad Rifai
+                            </div>
+</div>
+</div>
+<!-- May 3 -->
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">3</span>
+<div class="mt-2 flex flex-col gap-1">
+<div class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[10px] p-1.5 rounded font-bold border-l-2 border-blue-500 truncate cursor-pointer hover:brightness-95">
+                                [P] Sarah Lee
+                            </div>
+</div>
+</div>
+<!-- May 4 -->
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">4</span>
+<div class="mt-2 flex flex-col gap-1">
+<div class="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-[10px] p-1.5 rounded font-bold border-l-2 border-orange-500 truncate cursor-pointer hover:brightness-95">
+                                [L] Junaedi
+                            </div>
+</div>
+</div>
+<!-- May 5 -->
+<div class="calendar-cell border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium text-red-500">5</span>
+</div>
+<!-- Week 2: Today Highlight -->
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors bg-primary/[0.03]">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-primary">6</span>
+<span class="text-[9px] font-bold text-primary bg-primary/10 px-1.5 rounded uppercase">Hari Ini</span>
+</div>
+<div class="mt-2 flex flex-col gap-1">
+<div class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[10px] p-1.5 rounded font-bold border-l-2 border-blue-500 truncate cursor-pointer hover:brightness-95">
+                                [P] Budi Santoso
+                            </div>
+<div class="bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-200 text-[10px] p-1.5 rounded font-bold border-l-2 border-indigo-600 truncate cursor-pointer hover:brightness-95">
+                                [M] Siti Aminah
+                            </div>
+<div class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[10px] p-1.5 rounded font-bold border-l-2 border-blue-500 truncate cursor-pointer hover:brightness-95">
+                                [P] Denny Cak
+                            </div>
+</div>
+</div>
+<!-- Repeat placeholders for full grid -->
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">7</span>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">8</span>
+<div class="mt-2 flex flex-col gap-1">
+<div class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[10px] p-1.5 rounded font-bold border-l-2 border-blue-500 truncate cursor-pointer hover:brightness-95">
+                                [P] Budi Santoso
+                            </div>
+</div>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">9</span>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">10</span>
+<div class="mt-2 flex flex-col gap-1">
+<div class="bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-200 text-[10px] p-1.5 rounded font-bold border-l-2 border-indigo-600 truncate cursor-pointer hover:brightness-95">
+                                [M] Ahmad Rifai
+                            </div>
+</div>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">11</span>
+</div>
+<div class="calendar-cell border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium text-red-500">12</span>
+</div>
+<!-- Row 3 placeholders -->
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">13</span>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">14</span>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">15</span>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">16</span>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">17</span>
+</div>
+<div class="calendar-cell border-r border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium">18</span>
+</div>
+<div class="calendar-cell border-b border-gray-100 dark:border-white/5 p-2 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+<span class="text-sm font-medium text-red-500">19</span>
+</div>
+</div>
+</div>
+<!-- Legends Row -->
+<div class="flex items-center gap-6 p-4 bg-white dark:bg-[#111418] border border-gray-200 dark:border-white/5 rounded-xl shadow-sm">
+<span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Keterangan:</span>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-sm bg-blue-500"></div>
+<span class="text-xs font-medium text-gray-600 dark:text-gray-400">Pagi (07:00 - 15:00)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-sm bg-indigo-700"></div>
+<span class="text-xs font-medium text-gray-600 dark:text-gray-400">Malam (23:00 - 07:00)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-sm bg-orange-400"></div>
+<span class="text-xs font-medium text-gray-600 dark:text-gray-400">Libur / Cuti</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Quick Info Toast (Example interaction feedback) -->
+<div class="fixed bottom-8 right-8 bg-white dark:bg-[#111418] shadow-2xl border border-gray-200 dark:border-white/10 p-4 rounded-xl max-w-sm hidden lg:flex items-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">event_available</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Update Jadwal Berhasil</h4>
+<p class="text-xs text-gray-500">Jadwal departemen Nursing telah diperbarui.</p>
+</div>
+<button class="ml-auto p-1 text-gray-400 hover:text-gray-600">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</body></html>

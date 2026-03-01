@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Employee Directory Management - Moiz Care HRIS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-size: 20px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white min-h-screen">
+<div class="flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e7eb] dark:border-[#2d3748] bg-white dark:bg-background-dark px-6 lg:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+</svg>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Moiz Care HRIS</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-1" href="#">Employees</a>
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" href="#">Payroll</a>
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium hover:text-primary transition-colors" href="#">Attendance</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="hidden sm:flex bg-[#f0f2f4] dark:bg-gray-800 rounded-lg px-3 py-1.5 items-center gap-2 w-full max-w-xs border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-gray-500">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 placeholder:text-gray-500 text-[#111418] dark:text-white" placeholder="Search employee..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-300 cursor-pointer">notifications</span>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border-2 border-primary/20" data-alt="User profile avatar of HR administrator" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxW_oJGWaoVHhkt5AVqGGEuMoLpxzpfT8DVIA45X6HOsmpmrh0oleYtaeEm8B86kTsi5su_TuE22k4Hi7CYp4n7DoUe_8jrUXVHl0AtlRSj8JCbJ-scQ9_4sXBIZwN_LKn4Bw5h6iFh06Rw51w2RaG_bNNvGfKsGEijEEF2Ig0DCsaMye2-ZeoI3xKbD3VAg2M5ezHynJu-I-xgGgaiANEquIIC9HdDN_z7PkWCTlWYvLihlj3d48KFLMB--WtmspplhCJtzk4puUf");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex w-64 flex-col border-r border-[#e5e7eb] dark:border-[#2d3748] bg-white dark:bg-background-dark p-4 gap-6">
+<div>
+<h1 class="text-[#111418] dark:text-white text-sm font-bold uppercase tracking-wider mb-4 px-3">HR Administration</h1>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-bold">Employee Directory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined">corporate_fare</span>
+<span class="text-sm font-medium">Department Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="text-sm font-medium">Leave Requests</span>
+</a>
+<div class="my-2 border-t border-gray-100 dark:border-gray-800"></div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">HRIS Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark">
+<!-- Page Breadcrumbs & Header -->
+<div class="px-6 py-4 flex flex-col gap-1">
+<div class="flex items-center gap-2 text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined !text-[12px]">chevron_right</span>
+<span class="text-primary">Employee Directory</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col">
+<h1 class="text-[#111418] dark:text-white text-3xl font-black leading-tight tracking-tight">Employee Directory</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Central database for all staff members at Moiz Care.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-all shadow-md active:scale-95">
+<span class="material-symbols-outlined">person_add</span>
+<span>Add New Employee</span>
+</button>
+</div>
+</div>
+<!-- Filters Section -->
+<div class="px-6 mb-6">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-[#e5e7eb] dark:border-[#2d3748] p-5">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+<h3 class="text-[#111418] dark:text-white text-sm font-bold uppercase tracking-wider">Quick Filters</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-gray-500 uppercase tracking-tighter">Position</label>
+<select class="form-select w-full rounded-lg border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-sm focus:border-primary focus:ring-primary/20 transition-all dark:text-gray-300">
+<option value="">All Positions</option>
+<option>Senior Nurse</option>
+<option>General Practitioner</option>
+<option>Specialist Surgeon</option>
+<option>Admin Staff</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-gray-500 uppercase tracking-tighter">Department</label>
+<select class="form-select w-full rounded-lg border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-sm focus:border-primary focus:ring-primary/20 transition-all dark:text-gray-300">
+<option value="">All Departments</option>
+<option>Clinical Operations</option>
+<option>Pharmacy</option>
+<option>Radiology</option>
+<option>Management</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-gray-500 uppercase tracking-tighter">Status</label>
+<select class="form-select w-full rounded-lg border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-sm focus:border-primary focus:ring-primary/20 transition-all dark:text-gray-300">
+<option value="">All Statuses</option>
+<option>Active</option>
+<option>On Leave</option>
+<option>Contract Terminated</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Table Section -->
+<div class="px-6 pb-10">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-[#e5e7eb] dark:border-[#2d3748] overflow-hidden">
+<div class="flex items-center justify-between p-4 border-b border-[#e5e7eb] dark:border-[#2d3748]">
+<div class="flex items-center gap-3">
+<span class="text-sm font-medium text-gray-600 dark:text-gray-400">Show</span>
+<select class="form-select rounded border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 py-1 px-3 text-xs dark:text-gray-300">
+<option>10</option>
+<option>25</option>
+<option>50</option>
+</select>
+<span class="text-sm font-medium text-gray-600 dark:text-gray-400">entries</span>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="form-input pl-10 pr-4 py-1.5 rounded-lg border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-sm w-64 focus:border-primary focus:ring-primary/20 dark:text-white" placeholder="Quick search table..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-900/50 border-b border-[#e5e7eb] dark:border-[#2d3748]">
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Photo</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Full Name</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">NIP</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Position</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Department</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e5e7eb] dark:divide-[#2d3748]">
+<!-- Row 1 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+<td class="px-6 py-4">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden border border-gray-100 dark:border-gray-700">
+<img class="object-cover w-full h-full" data-alt="Employee profile picture: Sarah Jenkins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwDEDHGU3oo2sGgHQ8FsoLVtRBzOuKTQx49BAFKkZ7lfCKywLzRyvS6GQe1hRDZR1scXPSrFTJtA2dQ-Q2uq6R6yOo0KZulbE5rcx5ML2F8zJ_HRd0TS-alYPNlW-T-sElvThxGOGcygOBXolouxojRwJaxS-T_J_Ye8nCRuu3LNtmddn2pJVQ-FYuglOGXhnlsehZ9Dar5D2ZTu1RZKVf2QFKG7RfY4BkOI9yQ0UH5dxLQ-uAUPVmjerSbsMdau2_10plk7ASlaLe"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111418] dark:text-white">Sarah Jenkins</span>
+<span class="text-xs text-gray-500">sarah.j@moizcare.com</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-gray-600 dark:text-gray-300">MC-2023-001</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold">Senior Nurse</span>
+</td>
+<td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Clinical Ops</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-all flex items-center justify-center" title="Detail">
+<span class="material-symbols-outlined !text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-all flex items-center justify-center" title="Edit">
+<span class="material-symbols-outlined !text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-red-500 text-white hover:bg-red-600 transition-all flex items-center justify-center" title="Nonaktifkan">
+<span class="material-symbols-outlined !text-[18px]">person_off</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+<td class="px-6 py-4">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden border border-gray-100 dark:border-gray-700">
+<img class="object-cover w-full h-full" data-alt="Employee profile picture: Dr. Marcus Thorne" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6KJddUM2WgNEtaufMntEptj4qOP3QoiZESsaCExMOpiOSuKHK0U44x531et8-JBfcUqQ36TqKwPch0zphvk7oNmxN_OdDTjjCqVKQ6FcIVHtl7ClLjq9yjgfMzMdu784DkqswZodNB5bVrzWRjCAbSa2tmq1-IBe_H1JquAUrPVdrSskmV_pCHEzCNCNWJLWOuSUnG4rxIso7LcQ18D6lfQJTwHBDHbZMUtl8K1gFcYy7GpScRBA5p7m_rKd36G2gT7r_L-2dbxiE"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111418] dark:text-white">Dr. Marcus Thorne</span>
+<span class="text-xs text-gray-500">m.thorne@moizcare.com</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-gray-600 dark:text-gray-300">MC-2023-008</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold">Specialist Surgeon</span>
+</td>
+<td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Clinical Ops</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-all flex items-center justify-center" title="Detail">
+<span class="material-symbols-outlined !text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-all flex items-center justify-center" title="Edit">
+<span class="material-symbols-outlined !text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-red-500 text-white hover:bg-red-600 transition-all flex items-center justify-center" title="Nonaktifkan">
+<span class="material-symbols-outlined !text-[18px]">person_off</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+<td class="px-6 py-4">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden border border-gray-100 dark:border-gray-700">
+<img class="object-cover w-full h-full" data-alt="Employee profile picture: Elena Rodriguez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXa1PvUxRxbVlXUjgs5onlm3NB-hCoNx41cLReF671aHkZ-2TI3C1LgUylDvspaU9TS5oqHOq4OiL6JrNF58PzVhu-ISxko10jQdlfZMbbmE_sVxQrk67OeErAqPwGoQA1BRCMMZtdMpDkegn_kvI2srmz4o_Y7VBNkWsO__QNBb6u_z9caZTyzlwRV-FjKWZHtS0DlEwWbp4Ewyw53-7IDWPUPMllieGkJQRznVv1nYLw_BglPPMD1nsJUsMD-W0v_A8zZnFCmf2I"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111418] dark:text-white">Elena Rodriguez</span>
+<span class="text-xs text-gray-500">elena.r@moizcare.com</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-gray-600 dark:text-gray-300">MC-2023-014</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold">Admin Staff</span>
+</td>
+<td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Management</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-all flex items-center justify-center" title="Detail">
+<span class="material-symbols-outlined !text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-all flex items-center justify-center" title="Edit">
+<span class="material-symbols-outlined !text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-red-500 text-white hover:bg-red-600 transition-all flex items-center justify-center" title="Nonaktifkan">
+<span class="material-symbols-outlined !text-[18px]">person_off</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+<td class="px-6 py-4">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden border border-gray-100 dark:border-gray-700">
+<img class="object-cover w-full h-full" data-alt="Employee profile picture: Thomas Müller" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMZnN-J5bHDVWgQbplDHQiIqnUvNCVQKFvUwfbNG4ngWHhRuelhyzqOp4p2brESO4GMgeqWg94_csJY_BVxFr2AGu_qSiQaSGmMnq4-SlMvUNuCtPxec6R4_DI-ddF02JyMx-L2yCvfrJCyWtWShK6llvC_4PTw35kgKckdXhSfn20jTILEwSTCksKES12t7hgDwo_JJOKpFZIRfpQL03_avorq5D_Im9wprO7zF-sncNM3HX1vMphnZ3tJVHth3bJPGTJgZcwJUuP"/>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111418] dark:text-white">Thomas Müller</span>
+<span class="text-xs text-gray-500">t.muller@moizcare.com</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-gray-600 dark:text-gray-300">MC-2023-022</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs font-bold">Pharmacy Tech</span>
+</td>
+<td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Pharmacy</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-all flex items-center justify-center" title="Detail">
+<span class="material-symbols-outlined !text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-all flex items-center justify-center" title="Edit">
+<span class="material-symbols-outlined !text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-red-500 text-white hover:bg-red-600 transition-all flex items-center justify-center" title="Nonaktifkan">
+<span class="material-symbols-outlined !text-[18px]">person_off</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900/50 border-t border-[#e5e7eb] dark:border-[#2d3748]">
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-tight">Showing 1 to 4 of 42 entries</span>
+<div class="flex gap-1">
+<button class="flex items-center justify-center size-8 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+<span class="material-symbols-outlined !text-[16px]">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded border border-primary bg-primary text-white text-xs font-bold">1</button>
+<button class="flex items-center justify-center size-8 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-xs font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">2</button>
+<button class="flex items-center justify-center size-8 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-xs font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">3</button>
+<button class="flex items-center justify-center size-8 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+<span class="material-symbols-outlined !text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

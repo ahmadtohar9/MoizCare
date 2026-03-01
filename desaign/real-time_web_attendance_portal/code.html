@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real-time Web Attendance Portal - Moiz Care HRIS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "success": "#22c55e",
+                        "danger": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen transition-colors duration-300">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+</svg>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Moiz Care HRIS</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Attendance</a>
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Payroll</a>
+<a class="text-[#111418] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Leave</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-background-light dark:bg-gray-800 text-[#111418] dark:text-white text-sm font-bold leading-normal transition-all hover:bg-gray-200 dark:hover:bg-gray-700">
+<span class="truncate">My Profile</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200 dark:border-gray-700" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgcJoGr8jEnf_axvoKgc85ZaqO2tSDg_AELbgmPV4WqJqoM0f2LK3WoaotoGvJj8wZEA2ntTgIAKGrZrfm3-zM3UREYSZOiRNXh8L3vxVAeOW5vpzdZz0TQG1Yz-aIxiYFuBsFVfr_6OiHkhD-TCtnhgMYPUGds2aJJerAe5jZz_JdHm-hlGiiu9V1ipA7V4AX4cU9CqLUKAfq9OGj2EdbOk39csp0plEn1vNHbtjm8vxKc0v0Z8CmW9dYN8gjeuKpXb6NlYkISHYF");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center py-10 px-4">
+<div class="layout-content-container flex flex-col max-w-[800px] w-full gap-6">
+<!-- Headline and Meta Text -->
+<div class="text-center mb-4">
+<h1 class="text-[#111418] dark:text-white tracking-light text-[36px] font-extrabold leading-tight">Absen Online</h1>
+<p class="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal mt-1">Portal Kehadiran Real-time Moiz Care</p>
+</div>
+<!-- Success Alert Example -->
+<div class="flex w-full overflow-hidden rounded-xl border border-green-200 bg-green-50 p-4 dark:border-green-900/30 dark:bg-green-900/10">
+<div class="flex items-center gap-3 text-green-700 dark:text-green-400">
+<span class="material-symbols-outlined text-[24px]">check_circle</span>
+<p class="text-sm font-semibold">Berhasil! Absen Masuk Anda telah tercatat pada jam 08:00 WIB.</p>
+</div>
+</div>
+<!-- Attendance Main Card -->
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row shadow-xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 overflow-hidden">
+<!-- Left Side: Visual / Map -->
+<div class="w-full @xl:w-1/3 bg-center bg-no-repeat aspect-video @xl:aspect-auto bg-cover" data-alt="Map showing office location pin" data-location="Jakarta" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAx-JpfJLO1EH9QTQdExjnFCKK2yvqHWWjfgCuvaQ3Q-16NbOjDyEXG6gpEJMELlBEKFSWndSr50oJUbP29dOGHH0_d8xNJFwin8cfMybXbo5nwIMCTLo27nU9EURn31ob8o9hW8GAfu6bsWzmHXfU2NdeQhRnSGe75ZioC-j45dnnAGvn1EeZLaqoyT25h-aT8aJhZJCq7c3Hqp1eDfBdY41IaO5eTfja8InypysgEvDPWz1uq7Jv-kmVZUWj0O6NM_9JwqVA2VSzt");'>
+</div>
+<!-- Right Side: Clock & Info -->
+<div class="flex w-full grow flex-col items-stretch justify-center gap-6 p-8">
+<div class="flex flex-col gap-1">
+<p class="text-[#617589] dark:text-gray-400 text-xs font-bold tracking-widest uppercase">Real-Time Clock</p>
+<p class="text-[#111418] dark:text-white text-6xl font-black leading-tight tracking-tight tabular-nums">08:45:22</p>
+<p class="text-primary font-semibold text-lg">Monday, 23 October 2023</p>
+</div>
+<hr class="border-gray-100 dark:border-gray-800"/>
+<div class="flex items-center justify-between flex-wrap gap-4">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-[#617589] dark:text-gray-400">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<p class="text-sm font-medium">Shift: Shift Pagi (08:00 - 17:00)</p>
+</div>
+<div class="flex items-center gap-2 text-[#617589] dark:text-gray-400">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<p class="text-sm font-medium">Location: Head Office - Moiz Care</p>
+</div>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-primary hover:bg-primary/10 rounded-lg transition-colors text-sm font-bold">
+<span class="material-symbols-outlined text-lg">history</span>
+                                    View History
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons Group -->
+<div class="flex justify-center mt-4">
+<div class="flex flex-col sm:flex-row flex-1 gap-6 px-4 py-3 max-w-[600px] w-full">
+<!-- Absen Masuk (Green) -->
+<button class="group flex-1 flex flex-col items-center justify-center gap-2 cursor-pointer overflow-hidden rounded-xl h-32 px-5 bg-success text-white transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-success/20">
+<span class="material-symbols-outlined text-4xl mb-1">login</span>
+<span class="text-lg font-extrabold tracking-[0.015em]">Absen Masuk</span>
+<span class="text-xs font-medium opacity-80">Check-in Workday</span>
+</button>
+<!-- Absen Pulang (Red) -->
+<button class="group flex-1 flex flex-col items-center justify-center gap-2 cursor-pointer overflow-hidden rounded-xl h-32 px-5 bg-danger text-white transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-danger/20">
+<span class="material-symbols-outlined text-4xl mb-1">logout</span>
+<span class="text-lg font-extrabold tracking-[0.015em]">Absen Pulang</span>
+<span class="text-xs font-medium opacity-80">Check-out Workday</span>
+</button>
+</div>
+</div>
+<!-- Additional Info Footer -->
+<div class="text-center px-4 mt-8 pb-10">
+<p class="text-gray-400 text-sm">
+                        Please ensure you are within the 100m radius of the office location to check-in.
+                    </p>
+<div class="flex justify-center gap-4 mt-4 text-gray-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">vpn_lock</span>
+<span class="text-xs">Secure IP Verified</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="text-xs">Encrypted Session</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

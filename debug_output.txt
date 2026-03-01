@@ -1,0 +1,199 @@
+﻿<h3>Foreign Keys di tabel pegawai:</h3><table border='1' cellpadding='5'><tr><th>Column</th><th>References Table</th><th>References Column</th></tr><tr><td>jnj_jabatan</td><td>jnj_jabatan</td><td>kode</td></tr><tr><td>kode_kelompok</td><td>kelompok_jabatan</td><td>kode_kelompok</td></tr><tr><td>kode_resiko</td><td>resiko_kerja</td><td>kode_resiko</td></tr><tr><td>departemen</td><td>departemen</td><td>dep_id</td></tr><tr><td>bidang</td><td>bidang</td><td>nama</td></tr><tr><td>stts_wp</td><td>stts_wp</td><td>stts</td></tr><tr><td>stts_kerja</td><td>stts_kerja</td><td>stts</td></tr><tr><td>pendidikan</td><td>pendidikan</td><td>tingkat</td></tr><tr><td>indexins</td><td>departemen</td><td>dep_id</td></tr><tr><td>bpd</td><td>bank</td><td>namabank</td></tr><tr><td>kode_emergency</td><td>emergency_index</td><td>kode_emergency</td></tr></table><hr><h3>Data di tabel stts_kerja:</h3><pre>Array
+(
+    [0] => stdClass Object
+        (
+            [stts] => -
+            [ktg] => -
+            [indek] => 0
+            [hakcuti] => 0
+        )
+
+    [1] => stdClass Object
+        (
+            [stts] => CK
+            [ktg] => Calon Kontrak
+            [indek] => 2
+            [hakcuti] => 3
+        )
+
+    [2] => stdClass Object
+        (
+            [stts] => FT
+            [ktg] => Kontrak Full Time
+            [indek] => 3
+            [hakcuti] => 12
+        )
+
+    [3] => stdClass Object
+        (
+            [stts] => PI
+            [ktg] => Pegawai Istimewa
+            [indek] => 5
+            [hakcuti] => 12
+        )
+
+    [4] => stdClass Object
+        (
+            [stts] => PT
+            [ktg] => Part Time
+            [indek] => 1
+            [hakcuti] => 2
+        )
+
+    [5] => stdClass Object
+        (
+            [stts] => T
+            [ktg] => Tetap
+            [indek] => 12
+            [hakcuti] => 12
+        )
+
+)
+</pre><hr><h3>Data di tabel stts_wp:</h3><pre>Array
+(
+    [0] => stdClass Object
+        (
+            [stts] => -
+            [ktg] => -
+        )
+
+    [1] => stdClass Object
+        (
+            [stts] => K/0
+            [ktg] => WP Kawin
+        )
+
+    [2] => stdClass Object
+        (
+            [stts] => K/1
+            [ktg] => Tambahan WP Kawin dg. 1 anak
+        )
+
+    [3] => stdClass Object
+        (
+            [stts] => K/2
+            [ktg] => Tambahan WP Kawin dg. 2 anak
+        )
+
+    [4] => stdClass Object
+        (
+            [stts] => K/3
+            [ktg] => Tambahan WP Kawin dg. 3 anak
+        )
+
+    [5] => stdClass Object
+        (
+            [stts] => mum
+            [ktg] => mum
+        )
+
+    [6] => stdClass Object
+        (
+            [stts] => TK/0
+            [ktg] => WP Tidak Kawin
+        )
+
+    [7] => stdClass Object
+        (
+            [stts] => TK/1
+            [ktg] => WP Tidak  Kawin dg. 1 Tanggungan
+        )
+
+    [8] => stdClass Object
+        (
+            [stts] => TK/2
+            [ktg] => WP Tidak  Kawin dg. 2 Tanggungan
+        )
+
+    [9] => stdClass Object
+        (
+            [stts] => TK/3
+            [ktg] => WP Tidak  Kawin dg. 3 Tanggungan
+        )
+
+)
+</pre><hr><h3>Data di tabel pendidikan:</h3><pre>Array
+(
+    [0] => stdClass Object
+        (
+            [tingkat] => -
+            [indek] => 0
+            [gapok1] => 0
+            [kenaikan] => 0
+            [maksimal] => 0
+        )
+
+    [1] => stdClass Object
+        (
+            [tingkat] => D3 IT
+            [indek] => 3
+            [gapok1] => 900000
+            [kenaikan] => 0
+            [maksimal] => 12
+        )
+
+    [2] => stdClass Object
+        (
+            [tingkat] => D3 PERAWAT
+            [indek] => 6
+            [gapok1] => 700000
+            [kenaikan] => 40000
+            [maksimal] => 20
+        )
+
+    [3] => stdClass Object
+        (
+            [tingkat] => S1 DIREKTUR UTAMA
+            [indek] => 10
+            [gapok1] => 10000000
+            [kenaikan] => 0
+            [maksimal] => 12
+        )
+
+    [4] => stdClass Object
+        (
+            [tingkat] => S1 KEDOKTERAN
+            [indek] => 10
+            [gapok1] => 3000000
+            [kenaikan] => 100000
+            [maksimal] => 15
+        )
+
+    [5] => stdClass Object
+        (
+            [tingkat] => S1 PEMERINTAHAN
+            [indek] => 0
+            [gapok1] => 0
+            [kenaikan] => 0
+            [maksimal] => 0
+        )
+
+    [6] => stdClass Object
+        (
+            [tingkat] => S1 PERAWAT
+            [indek] => 10
+            [gapok1] => 1000000
+            [kenaikan] => 50000
+            [maksimal] => 15
+        )
+
+    [7] => stdClass Object
+        (
+            [tingkat] => S1 PERAWAT KONTRAK
+            [indek] => 0
+            [gapok1] => 0
+            [kenaikan] => 0
+            [maksimal] => 10
+        )
+
+    [8] => stdClass Object
+        (
+            [tingkat] => S2 PERAWAT
+            [indek] => 10
+            [gapok1] => 0
+            [kenaikan] => 0
+            [maksimal] => 20
+        )
+
+)
+</pre>

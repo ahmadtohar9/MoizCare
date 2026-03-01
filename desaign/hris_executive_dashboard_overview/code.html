@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HRIS Executive Dashboard Overview - Moiz Care</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-[#1a2530] border-r border-[#e5e7eb] dark:border-[#2d3a4b] hidden md:flex flex-col fixed h-full z-10">
+<div class="p-6 border-b border-[#e5e7eb] dark:border-[#2d3a4b] flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-2xl">clinical_notes</span>
+</div>
+<h1 class="font-bold text-lg tracking-tight">Moiz Care HRIS</h1>
+</div>
+<nav class="flex-1 px-4 py-6 flex flex-col gap-2 overflow-y-auto">
+<div class="flex flex-col gap-1 mb-6">
+<p class="px-3 text-[10px] font-bold uppercase tracking-wider text-[#617589] dark:text-[#94a3b8] mb-2">Main Menu</p>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-sm" href="#">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#111418] dark:text-[#cbd5e1] hover:bg-[#f0f2f4] dark:hover:bg-[#2d3a4b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">badge</span>
+<span class="text-sm font-medium">Pegawai</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#111418] dark:text-[#cbd5e1] hover:bg-[#f0f2f4] dark:hover:bg-[#2d3a4b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">schedule</span>
+<span class="text-sm font-medium">Attendance</span>
+</a>
+</div>
+<div class="flex flex-col gap-1 mb-6">
+<p class="px-3 text-[10px] font-bold uppercase tracking-wider text-[#617589] dark:text-[#94a3b8] mb-2">Finance &amp; Docs</p>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#111418] dark:text-[#cbd5e1] hover:bg-[#f0f2f4] dark:hover:bg-[#2d3a4b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+<span class="text-sm font-medium">Payroll</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#111418] dark:text-[#cbd5e1] hover:bg-[#f0f2f4] dark:hover:bg-[#2d3a4b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">description</span>
+<span class="text-sm font-medium">Documents</span>
+</a>
+</div>
+<div class="mt-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#111418] dark:text-[#cbd5e1] hover:bg-[#f0f2f4] dark:hover:bg-[#2d3a4b] transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="h-16 bg-white dark:bg-[#1a2530] border-b border-[#e5e7eb] dark:border-[#2d3a4b] flex items-center justify-between px-8 sticky top-0 z-20">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#617589] text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-[#f0f2f4] dark:bg-[#2d3a4b] border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/50 dark:text-white" placeholder="Search employee or document..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-[#2d3a4b] rounded-lg relative">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-[#1a2530]"></span>
+</button>
+<div class="h-8 w-[1px] bg-[#e5e7eb] dark:bg-[#2d3a4b]"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold">Admin Executive</p>
+<p class="text-[11px] text-[#617589]">Super Admin</p>
+</div>
+<div class="size-10 rounded-full border-2 border-primary/20 p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Profile picture of male executive administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcCFSaLrUcXFpw-sWLzJcw3hQU2JKwzMLhDqjDxdvBmJow0NvmWC2Rp2XKKE0KJyG4Rw-1dcthcXYbNWbp2FE3PWZD5gnrDMw9CX-uMd-uNfNXKKLaXxCS8LrQ5NXsaDfR6m8cENSn-0tKDhDO8UHoH5v6auDMY-6uC0uSPTWRx4oTZfl57Z9HueJJ6rLsF8qzIa8-V4XnzdWwnJtKIQrLt9i0KaPnzRDHSy0Cnt_RrmWiWe0Wk24rMXp4C0EZR5Q3C9rY-jrXf-Ut"/>
+</div>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Page Heading & Breadcrumbs -->
+<div>
+<nav class="flex gap-2 text-sm font-medium text-[#617589] dark:text-[#94a3b8] mb-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span>/</span>
+<span class="text-[#111418] dark:text-white">Dashboard Overview</span>
+</nav>
+<div class="flex items-end justify-between">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-[#111418] dark:text-white">Executive Dashboard Overview</h2>
+<p class="text-[#617589] dark:text-[#94a3b8]">Real-time workforce monitoring and compliance tracking.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2.5 rounded-lg flex items-center gap-2 text-sm font-bold shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">file_download</span>
+                            Export Report
+                        </button>
+</div>
+</div>
+<!-- Summary Cards Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Total Pegawai -->
+<div class="bg-primary rounded-xl p-6 text-white shadow-xl shadow-primary/20 relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-primary-100/80 text-sm font-medium uppercase tracking-wider">Total Pegawai</p>
+<h3 class="text-4xl font-bold mt-1">1,254</h3>
+<div class="mt-4 flex items-center gap-1 text-sm bg-white/20 w-fit px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+2.5%</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white/10 group-hover:scale-110 transition-transform">group</span>
+</div>
+<!-- Hadir Hari Ini -->
+<div class="bg-[#28a745] rounded-xl p-6 text-white shadow-xl shadow-green-500/20 relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-white/80 text-sm font-medium uppercase tracking-wider">Hadir Hari Ini</p>
+<h3 class="text-4xl font-bold mt-1">942</h3>
+<div class="mt-4 flex items-center gap-1 text-sm bg-white/20 w-fit px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span>75% Capacity</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white/10 group-hover:scale-110 transition-transform">how_to_reg</span>
+</div>
+<!-- Berkas Expired -->
+<div class="bg-[#dc3545] rounded-xl p-6 text-white shadow-xl shadow-red-500/20 relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-white/80 text-sm font-medium uppercase tracking-wider">Berkas Expired</p>
+<h3 class="text-4xl font-bold mt-1">12</h3>
+<div class="mt-4 flex items-center gap-1 text-sm bg-white/20 w-fit px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">error</span>
+<span>Requires Action</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white/10 group-hover:scale-110 transition-transform">assignment_late</span>
+</div>
+<!-- Jadwal Aktif -->
+<div class="bg-[#ffc107] rounded-xl p-6 text-[#111418] shadow-xl shadow-yellow-500/20 relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-[#111418]/60 text-sm font-medium uppercase tracking-wider">Jadwal Aktif</p>
+<h3 class="text-4xl font-bold mt-1">48</h3>
+<div class="mt-4 flex items-center gap-1 text-sm bg-black/10 w-fit px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">event_repeat</span>
+<span>Running Shifts</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-black/5 group-hover:scale-110 transition-transform">calendar_today</span>
+</div>
+</div>
+<!-- 2-Column Layout Main Area -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<!-- Left: Chart Area -->
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-white dark:bg-[#1a2530] border border-[#e5e7eb] dark:border-[#2d3a4b] rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-5 border-b border-[#e5e7eb] dark:border-[#2d3a4b] flex items-center justify-between">
+<h4 class="font-bold text-[#111418] dark:text-white">Daily Attendance Trends</h4>
+<div class="flex gap-2">
+<select class="text-xs font-bold bg-[#f0f2f4] dark:bg-[#2d3a4b] border-none rounded-lg px-3 py-1.5 focus:ring-0">
+<option>Last 30 Days</option>
+<option>Last 7 Days</option>
+</select>
+</div>
+</div>
+<div class="p-6">
+<!-- Chart Visualization Placeholder -->
+<div class="relative h-72 w-full flex items-end justify-between gap-1">
+<!-- Placeholder data points -->
+<div class="flex-1 bg-primary/10 hover:bg-primary/30 transition-colors h-[40%] rounded-t-sm relative group cursor-pointer">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap z-10">620 Presence</div>
+</div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/30 transition-colors h-[55%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/30 transition-colors h-[45%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary/40 transition-colors h-[65%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary/30 hover:bg-primary/50 transition-colors h-[85%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary/40 transition-colors h-[70%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary/40 hover:bg-primary/60 transition-colors h-[90%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary/30 hover:bg-primary/50 transition-colors h-[75%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary/40 hover:bg-primary/60 transition-colors h-[80%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary/40 transition-colors h-[60%] rounded-t-sm relative group cursor-pointer"></div>
+<div class="flex-1 bg-primary h-[82%] rounded-t-sm relative group cursor-pointer">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] py-1 px-2 rounded opacity-100 whitespace-nowrap z-10">942 Presence (Today)</div>
+</div>
+<!-- Custom SVG Path for trend line -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="none">
+<path d="M 0 200 Q 100 150, 200 180 T 400 100 T 600 50 T 800 80" fill="none" stroke="#1173d4" stroke-width="3"></path>
+</svg>
+</div>
+<div class="flex justify-between mt-4 text-[11px] text-[#617589] font-medium px-2">
+<span>May 01</span>
+<span>May 07</span>
+<span>May 14</span>
+<span>May 21</span>
+<span>May 28</span>
+<span>Today</span>
+</div>
+</div>
+</div>
+<!-- Secondary list in Main column -->
+<div class="bg-white dark:bg-[#1a2530] border border-[#e5e7eb] dark:border-[#2d3a4b] rounded-xl shadow-sm">
+<div class="px-6 py-4 border-b border-[#e5e7eb] dark:border-[#2d3a4b] flex items-center justify-between">
+<h4 class="font-bold text-[#111418] dark:text-white">Recent Activity</h4>
+<a class="text-primary text-xs font-bold hover:underline" href="#">View All</a>
+</div>
+<div class="divide-y divide-[#e5e7eb] dark:divide-[#2d3a4b]">
+<div class="p-4 flex items-center gap-4 hover:bg-background-light dark:hover:bg-[#2d3a4b] transition-colors">
+<div class="size-10 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">New employee onboarded: <span class="text-primary">Sarah Wilson</span></p>
+<p class="text-xs text-[#617589]">Nursing Department • 2 hours ago</p>
+</div>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-background-light dark:hover:bg-[#2d3a4b] transition-colors">
+<div class="size-10 rounded-lg bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">Contract Renewed: <span class="text-primary">James Rodriguez</span></p>
+<p class="text-xs text-[#617589]">IT Specialist • 5 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Notifications & Alerts -->
+<div class="space-y-6">
+<!-- Alert Section 1: Files Expiring -->
+<div class="bg-white dark:bg-[#1a2530] border border-[#e5e7eb] dark:border-[#2d3a4b] rounded-xl overflow-hidden shadow-sm">
+<div class="bg-red-500 px-4 py-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-white text-xl">warning</span>
+<h4 class="font-bold text-white text-sm">Files Expiring Soon</h4>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-lg">
+<div>
+<p class="text-xs font-bold text-red-700 dark:text-red-400">Dr. Robert Fox</p>
+<p class="text-[10px] text-red-600/80 dark:text-red-400/60 font-medium">STR License Certificate</p>
+</div>
+<span class="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">2 Days</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-lg">
+<div>
+<p class="text-xs font-bold text-red-700 dark:text-red-400">Maria S. Nursing</p>
+<p class="text-[10px] text-red-600/80 dark:text-red-400/60 font-medium">Health Insurance Card</p>
+</div>
+<span class="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">5 Days</span>
+</div>
+<button class="w-full py-2 text-[11px] font-bold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors uppercase tracking-widest">Manage Expirations</button>
+</div>
+</div>
+<!-- Alert Section 2: Missing Attendance -->
+<div class="bg-white dark:bg-[#1a2530] border border-[#e5e7eb] dark:border-[#2d3a4b] rounded-xl overflow-hidden shadow-sm">
+<div class="bg-yellow-500 px-4 py-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[#111418] text-xl">watch_later</span>
+<h4 class="font-bold text-[#111418] text-sm">Check-in Exceptions</h4>
+</div>
+<div class="p-4 space-y-4">
+<div class="flex gap-3">
+<img class="size-8 rounded-full object-cover" data-alt="Female employee headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXM6Oozq7H3wE8x0AzYDyNdGQ8-GBBp1YoISJGTzE_dqhEoOU5Y5VvJks4qSfTHMBLeQVbFwthDNVNmslUAzfhDUZcn8v4oSyGCKBxjAMH44Pr2MdWVj-4cbiiGub2s5mels9eUrkKUWZaygqLo5rvcRlNsDj8j_JkU0PCM5V8__UKFrDh9ayR54F8rpNhnafwOTrd_1IB8r1Cys3RnEiCIrXZ_UOs7JHIhB3d-8F-Jvt0NVXK5mAgG725dTT13YnT0_iwxPNryM3H"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-xs font-bold">Leslie Alexander</p>
+<span class="text-[9px] font-black text-yellow-600 uppercase">Late 45m</span>
+</div>
+<p class="text-[10px] text-[#617589]">Finance Dept • No Check-in</p>
+</div>
+</div>
+<div class="flex gap-3">
+<img class="size-8 rounded-full object-cover" data-alt="Male employee headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEgl3EOqpaqTmb2yVEDma3csZuYLr9KzjDlhiHbQy9jxi1ENhcORqzv6o21gVBdmBfByWbvQZAjE48lNQHMirIOPRJnCPSdG_1hD7x20M8MvsZO2cUNQKCp8FnmPDGvC6x9HTwq5J7IrFRHPmwWW_mn7AjkDmXPx2jB_y3Ref6n9ZAq6o6ccDrQxAzK1Fg6Xx20qKVb-HoW-4F-Y_PKHvOD1zo8UjDouc5GOU3NdmukVHA8noEK3GfYDSEu-tT29ZVigJwzu_OIvrI"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-xs font-bold">Dries Vincent</p>
+<span class="text-[9px] font-black text-yellow-600 uppercase">Unconfirmed</span>
+</div>
+<p class="text-[10px] text-[#617589]">General Services • Shift A</p>
+</div>
+</div>
+<button class="w-full py-2 bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 text-xs font-bold rounded-lg transition-colors">Broadcast Reminder</button>
+</div>
+</div>
+<!-- Quick Links / Shortcuts -->
+<div class="bg-white dark:bg-[#1a2530] border border-[#e5e7eb] dark:border-[#2d3a4b] rounded-xl p-6 shadow-sm">
+<h4 class="font-bold text-sm mb-4">Quick Management</h4>
+<div class="grid grid-cols-2 gap-3">
+<a class="flex flex-col items-center gap-2 p-3 bg-[#f0f2f4] dark:bg-[#2d3a4b] rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">person_add</span>
+<span class="text-[10px] font-bold">Add Staff</span>
+</a>
+<a class="flex flex-col items-center gap-2 p-3 bg-[#f0f2f4] dark:bg-[#2d3a4b] rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">calendar_add_on</span>
+<span class="text-[10px] font-bold">Set Shift</span>
+</a>
+<a class="flex flex-col items-center gap-2 p-3 bg-[#f0f2f4] dark:bg-[#2d3a4b] rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">request_quote</span>
+<span class="text-[10px] font-bold">Pay Slip</span>
+</a>
+<a class="flex flex-col items-center gap-2 p-3 bg-[#f0f2f4] dark:bg-[#2d3a4b] rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<span class="text-[10px] font-bold">Reports</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto px-8 py-6 border-t border-[#e5e7eb] dark:border-[#2d3a4b] text-center sm:text-left">
+<p class="text-xs text-[#617589] dark:text-[#94a3b8]">© 2024 Moiz Care HRIS. Designed for Executive Management. v2.4.0-stable</p>
+</footer>
+</main>
+</div>
+</body></html>

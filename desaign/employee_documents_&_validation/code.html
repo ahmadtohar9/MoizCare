@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Employee Documents &amp; Validation - Moiz Care HRIS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen text-[#111418] dark:text-white transition-colors duration-200">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1a242d] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Moiz Care HRIS</h2>
+</div>
+<nav class="flex items-center gap-9">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-bold leading-normal text-primary border-b-2 border-primary py-1" href="#">Employees</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Payroll</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Attendance</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden">
+<div class="text-[#617589] flex border-none bg-gray-100 dark:bg-gray-800 items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-gray-100 dark:bg-gray-800 focus:ring-0 h-full placeholder:text-[#617589] px-4 pl-2 text-sm font-normal" placeholder="Cari karyawan..." value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200" data-alt="Avatar of HR Administrator" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCb_Z90_YZHOFkr3XlwcVAY58Aaum5BkrWjWtR12ojGSM6ccIbD04hv45EXVEhIkN1Gns-ClIqJgqJKjA7C0rqOMEB82f6KUmzYjF77917MFoMEgaR5vuAVuFEx1REMSCp3IosSbSI-P92-TDoBzL2VFOzKvzCUAyaOPBWRo24FY0gc3YynH0155GBesFFAxjI_nOnSm-ls1S7jiUfWqZBn2LMWBt_FSerT0COeNAj4MyNwSybrtD7xDzcpRoMeu1JfsN-HwoBnIblC");'></div>
+</div>
+</header>
+<div class="max-w-[1200px] mx-auto py-8 px-6 lg:px-10">
+<!-- Breadcrumbs -->
+<nav class="flex flex-wrap gap-2 mb-6">
+<a class="text-[#617589] text-sm font-medium hover:text-primary" href="#">Employees</a>
+<span class="text-[#617589] text-sm font-medium">/</span>
+<a class="text-[#617589] text-sm font-medium hover:text-primary" href="#">Budi Santoso</a>
+<span class="text-[#617589] text-sm font-medium">/</span>
+<span class="text-[#111418] dark:text-white text-sm font-bold">Berkas</span>
+</nav>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Side Navigation Panel -->
+<aside class="w-full lg:w-64 flex flex-col gap-6">
+<div class="bg-white dark:bg-[#1a242d] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+<div class="flex flex-col items-center pb-6 border-b border-gray-100 dark:border-gray-800 mb-4">
+<div class="size-20 rounded-full bg-cover bg-center border-4 border-gray-50 mb-3" data-alt="Employee profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzSwxjt7ESL4V2Blq-K6caMuVjcUD35ET46xBy0xwB1sN8mN9TTvbFK9hupvrHvys6zxuSEg1nZeNiMzC__juPWbg2UCFy_mXzsp9SoKKjaNkeCDcEFNWhtIZpkPMXVoWHDyLKM1ZCiLmsD_IaLol84FnQ-zX6kNiAzgSkluXcC1W5U3aFwTlQrnLNYjsVDHmSMkGnqQi-_UBWPbKlCV0T3sB_tZFC5NeE2wzQrqz2kpfNzcOKuEKwpr-PW_j9kaxOjrP0crnR-GBb')"></div>
+<h3 class="font-bold text-lg">Budi Santoso</h3>
+<p class="text-sm text-[#617589]">Senior HR Specialist</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#617589] hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="text-sm font-medium">Personal Info</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#617589] hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">work</span>
+<span class="text-sm font-medium">Employment</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1">description</span>
+<span class="text-sm font-bold">Berkas</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#617589] hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">favorite</span>
+<span class="text-sm font-medium">Benefits</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#617589] hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">trending_up</span>
+<span class="text-sm font-medium">Performance</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-center gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-black leading-tight tracking-tight text-[#111418] dark:text-white">Berkas Karyawan</h1>
+<p class="text-[#617589] text-sm">Manajemen dan validasi dokumen legal serta sertifikasi karyawan.</p>
+</div>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-lg">upload_file</span>
+<span>Upload Berkas Baru</span>
+</button>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-white dark:bg-[#1a242d] border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#617589] text-sm font-medium">Total Berkas</p>
+<span class="material-symbols-outlined text-primary text-lg">folder_open</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-3xl font-bold leading-tight">12</p>
+<p class="text-[#078838] text-sm font-bold mb-1">+2 bulan ini</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-white dark:bg-[#1a242d] border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#617589] text-sm font-medium">Akan Kadaluwarsa</p>
+<span class="material-symbols-outlined text-amber-500 text-lg">notification_important</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-3xl font-bold leading-tight">2</p>
+<p class="text-amber-500 text-sm font-bold mb-1">Butuh perhatian</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-white dark:bg-[#1a242d] border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#617589] text-sm font-medium">Tidak Valid</p>
+<span class="material-symbols-outlined text-red-500 text-lg">cancel</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-3xl font-bold leading-tight">1</p>
+<p class="text-red-500 text-sm font-bold mb-1">Ditolak</p>
+</div>
+</div>
+</div>
+<!-- Document Table Container -->
+<div class="bg-white dark:bg-[#1a242d] rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+<div class="p-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/50">
+<h4 class="font-bold text-sm uppercase tracking-wider text-[#617589]">Daftar Dokumen</h4>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-[#617589]">
+<span class="material-symbols-outlined text-xl">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800/20 text-[#617589] text-xs font-bold uppercase tracking-wider">
+<th class="px-6 py-4">Nama Dokumen</th>
+<th class="px-6 py-4">Tipe</th>
+<th class="px-6 py-4">Berlaku Sampai</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+<!-- Row 1 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<span class="text-sm font-semibold">KTP_Budi_Santoso.pdf</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617589]">Identitas Diri</td>
+<td class="px-6 py-4 text-sm font-medium">Seumur Hidup</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                            Valid
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-[#617589] hover:text-primary hover:bg-primary/10 rounded-lg transition-all" title="Preview">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-[#617589] hover:text-green-600 hover:bg-green-50 rounded-lg transition-all" title="Validasi">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="text-sm font-semibold">Ijazah_S1_Teknik.pdf</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617589]">Pendidikan</td>
+<td class="px-6 py-4 text-sm font-medium">N/A</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                                            Menunggu Validasi
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-[#617589] hover:text-primary hover:bg-primary/10 rounded-lg" title="Preview">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90" title="Validasi">
+<span class="material-symbols-outlined text-sm">verified</span>
+                                                Validasi
+                                            </button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<span class="text-sm font-semibold">Sertifikat_TOEFL_2023.pdf</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617589]">Sertifikasi</td>
+<td class="px-6 py-4 text-sm font-medium text-amber-600">12 Des 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                                            Akan Kadaluwarsa
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-[#617589] hover:text-primary hover:bg-primary/10 rounded-lg" title="Preview">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-[#617589] hover:text-green-600 hover:bg-green-50 rounded-lg transition-all" title="Validasi">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-600">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<span class="text-sm font-semibold text-red-600">SKCK_Exp.pdf</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617589]">Hukum/Legal</td>
+<td class="px-6 py-4 text-sm font-medium text-red-600">01 Jan 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                                            Expired
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-[#617589] hover:text-primary hover:bg-primary/10 rounded-lg" title="Preview">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all" title="Hapus">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<span class="text-sm font-semibold">Kontrak_Kerja_2024.pdf</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617589]">Kontrak</td>
+<td class="px-6 py-4 text-sm font-medium">31 Des 2025</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                            Valid
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-[#617589] hover:text-primary hover:bg-primary/10 rounded-lg" title="Preview">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-[#617589] hover:text-green-600 hover:bg-green-50 rounded-lg transition-all" title="Validasi">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Placeholder -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-gray-100 dark:border-gray-800 bg-gray-50/30 dark:bg-gray-800/20">
+<p class="text-xs text-[#617589] font-medium">Menampilkan 1-5 dari 12 berkas</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs font-bold border border-gray-200 dark:border-gray-700 rounded bg-white dark:bg-gray-800 opacity-50 cursor-not-allowed">Kembali</button>
+<button class="px-3 py-1 text-xs font-bold border border-gray-200 dark:border-gray-700 rounded bg-white dark:bg-gray-800 hover:bg-gray-50">Selanjutnya</button>
+</div>
+</div>
+</div>
+<!-- Guidance Info Box -->
+<div class="bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-xl p-4 flex gap-4">
+<div class="text-blue-600">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-blue-900 dark:text-blue-300">Catatan Validasi</h5>
+<p class="text-xs text-blue-800/80 dark:text-blue-400/80 leading-relaxed mt-1">
+                            Pastikan untuk memeriksa keaslian stempel dan tanda tangan pada dokumen yang membutuhkan legalisir. Dokumen yang ditolak akan mengirimkan notifikasi otomatis kepada karyawan melalui portal mereka.
+                        </p>
+</div>
+</div>
+</main>
+</div>
+</div>
+<!-- Simple Backdrop for Mockup (Not functional without JS) -->
+<div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" id="upload-modal-backdrop">
+<div class="bg-white dark:bg-[#1a242d] w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl m-4">
+<div class="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+<h3 class="font-bold text-lg text-[#111418] dark:text-white">Upload Dokumen Baru</h3>
+<button class="text-[#617589] hover:text-red-500">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 flex flex-col gap-5">
+<div class="border-2 border-dashed border-gray-200 dark:border-gray-800 rounded-xl p-8 flex flex-col items-center gap-3 bg-gray-50/50 dark:bg-gray-800/20">
+<span class="material-symbols-outlined text-4xl text-primary">cloud_upload</span>
+<div class="text-center">
+<p class="text-sm font-bold">Tarik dan lepas file di sini</p>
+<p class="text-xs text-[#617589]">atau klik untuk memilih dari komputer</p>
+</div>
+<p class="text-[10px] text-[#617589] mt-2">Maks. Ukuran File: 10MB (PDF, JPG, PNG)</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-[#617589]">Tipe Dokumen</label>
+<select class="form-select rounded-lg border-gray-200 dark:border-gray-800 dark:bg-gray-900 text-sm focus:ring-primary focus:border-primary">
+<option>Pilih Tipe...</option>
+<option>Identitas Diri (KTP/Paspor)</option>
+<option>Pendidikan (Ijazah)</option>
+<option>Sertifikasi Keahlian</option>
+<option>Hukum (SKCK)</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-[#617589]">Masa Berlaku</label>
+<input class="form-input rounded-lg border-gray-200 dark:border-gray-800 dark:bg-gray-900 text-sm focus:ring-primary focus:border-primary" type="date"/>
+</div>
+</div>
+</div>
+<div class="p-6 bg-gray-50 dark:bg-gray-800/50 flex gap-3 justify-end">
+<button class="px-4 py-2 text-sm font-bold text-[#617589] hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg">Batal</button>
+<button class="px-6 py-2 text-sm font-bold bg-primary text-white rounded-lg hover:bg-primary/90">Simpan Berkas</button>
+</div>
+</div>
+</div>
+</body></html>
